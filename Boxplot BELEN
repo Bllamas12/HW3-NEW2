@@ -1,0 +1,10 @@
+#setwd("cloud/project")
+text1<- read.csv("TextMessages.csv", header = TRUE)
+install.packages("reshape")
+library(reshape)
+text2<-melt(text1,id=c("Participant","Group"), measured=c("Baseline","Six_months"))
+#
+text2$Group<- as.factor(text2$Group)
+#install.packages("ggplot2")
+library(ggplot2)                          
+ggplot(text2,aes(x=Group,y=value)) + geom_boxplot()
