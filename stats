@@ -1,0 +1,27 @@
+setwd("/cloud/project")
+
+library(readr)
+TextMessages_for_HW3 <- read_csv("TextMessages.csv")
+
+
+nrow(TextMessages_for_HW3)
+#50 rows of data
+names(TextMessages_for_HW3)
+#[1] "Group" "Baseline" "Six_Months" "Participant"
+
+#install.packages("pastecs")
+
+library(pastecs)
+
+
+round( stat.desc(TextMessages_for_HW3$Six_months), 2)
+#
+
+round( stat.desc(TextMessages_for_HW3$Baseline), 2)
+
+by(TextMessages_for_HW3$Six_months, TextMessages_for_HW3$Group, stat.desc)
+#
+
+
+by(TextMessages_for_HW3$Baseline, TextMessages_for_HW3$Group, stat.desc)
+
